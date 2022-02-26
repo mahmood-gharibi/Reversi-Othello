@@ -567,6 +567,7 @@ function turnComment() {
   }
 
   let gameScore = Score();
+
   let scoreBlack = gameScore.black;
   let scoreWhite = gameScore.white;
   let ChekSituation = allowedMovement();
@@ -590,6 +591,7 @@ function turnComment() {
 }
 
 function setMemory() {
+  // This function Save Palyer's Move.
   let discmemo = new Array();
   for (let row = 0; row < 8; row++) {
     for (let column = 0; column < 8; column++) {
@@ -601,6 +603,7 @@ function setMemory() {
 }
 
 function getMemory(index: number) {
+  // This function return player's Move by Index number.
   let discmemo = gameMemory[index];
   let couter: number = 0;
   for (let row = 0; row < 8; row++) {
@@ -611,6 +614,7 @@ function getMemory(index: number) {
   }
 }
 function drawtools() {
+  // Draw Buttom bar.
   let buttons: HTMLElement;
   buttons = <HTMLElement>document.getElementById("buttons-section");
   buttons.innerHTML = `<div id="btn-left"><button class="button-19" id="btn" role="button" onclick="getBack()">عقب</button></div>
@@ -620,6 +624,7 @@ function drawtools() {
 }
 
 function reStart() {
+  // Restart game ( ... and resets all settings. )
   disableClick = false;
   for (let row = 0; row < 8; row++) {
     for (let column = 0; column < 8; column++) {
@@ -655,6 +660,7 @@ function reStart() {
 }
 
 function getBack() {
+  // Show Previous move.
   if (indexMemory == 0) {
     return;
   }
@@ -666,6 +672,7 @@ function getBack() {
 }
 
 function getNext() {
+  // Show Next move.
   if (indexMemory == memoryDiscs.length - 1) {
     return;
   }
@@ -677,8 +684,7 @@ function getNext() {
 }
 
 function drawMemory() {
-  // This function draw all of movement for each discs and set attribute for them.
-  // Also at the end of this function we call  'allowedMovement' and drawAllowedMovement' function's.
+  // This function draw game memory.
   discLayer.innerHTML = "";
 
   for (let row = 0; row < 8; row++) {
@@ -709,6 +715,8 @@ function drawMemory() {
 }
 
 function elementVisibility(tagName: string, visible: boolean) {
+  // Show and Hide Some element ( in this case Show buttom's at the end of game.)
+
   let element: HTMLElement = <HTMLElement>document.getElementById(tagName);
   let element2: HTMLElement = <HTMLElement>(
     document.getElementById("btn-center")
