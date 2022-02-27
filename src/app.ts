@@ -673,7 +673,7 @@ function getBack() {
 
 function getNext() {
   // Show Next move.
-  if (indexMemory == memoryDiscs.length - 1) {
+  if (indexMemory == gameMemory.length - 1) {
     return;
   }
   discAllowedLayer.innerHTML = "";
@@ -691,7 +691,7 @@ function drawMemory() {
     for (let column = 0; column < 8; column++) {
       let value = memoryDiscs[row][column];
       if (value == 0) {
-        // console.log(row + "," + column + "," + value);
+        // Do not anything.
       } else {
         let disc: HTMLElement = <HTMLElement>document.createElement("div");
         disc.setAttribute("id", "disc");
