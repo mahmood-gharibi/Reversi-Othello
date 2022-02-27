@@ -550,6 +550,7 @@ function turnComment() {
     }
 }
 function setMemory() {
+    // This function Save Palyer's Move.
     let discmemo = new Array();
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
@@ -560,6 +561,7 @@ function setMemory() {
     indexMemory = gameMemory.length - 1;
 }
 function getMemory(index) {
+    // This function return player's Move by Index number.
     let discmemo = gameMemory[index];
     let couter = 0;
     for (let row = 0; row < 8; row++) {
@@ -570,6 +572,7 @@ function getMemory(index) {
     }
 }
 function drawtools() {
+    // Draw Buttom bar.
     let buttons;
     buttons = document.getElementById("buttons-section");
     buttons.innerHTML = `<div id="btn-left"><button class="button-19" id="btn" role="button" onclick="getBack()">عقب</button></div>
@@ -578,6 +581,7 @@ function drawtools() {
   `;
 }
 function reStart() {
+    // Restart game ( ... and resets all settings. )
     disableClick = false;
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
@@ -612,6 +616,7 @@ function reStart() {
     elementVisibility("btn-right", false);
 }
 function getBack() {
+    // Show Previous move.
     if (indexMemory == 0) {
         return;
     }
@@ -622,7 +627,8 @@ function getBack() {
     drawMemory();
 }
 function getNext() {
-    if (indexMemory == memoryDiscs.length - 1) {
+    // Show Next move.
+    if (indexMemory == gameMemory.length - 1) {
         return;
     }
     discAllowedLayer.innerHTML = "";
@@ -632,14 +638,13 @@ function getNext() {
     drawMemory();
 }
 function drawMemory() {
-    // This function draw all of movement for each discs and set attribute for them.
-    // Also at the end of this function we call  'allowedMovement' and drawAllowedMovement' function's.
+    // This function draw game memory.
     discLayer.innerHTML = "";
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
             let value = memoryDiscs[row][column];
             if (value == 0) {
-                // console.log(row + "," + column + "," + value);
+                // Do not anything.
             }
             else {
                 let disc = document.createElement("div");
@@ -662,6 +667,7 @@ function drawMemory() {
     }
 }
 function elementVisibility(tagName, visible) {
+    // Show and Hide Some element ( in this case Show buttom's at the end of game.)
     let element = document.getElementById(tagName);
     let element2 = (document.getElementById("btn-center"));
     if (visible == true) {
