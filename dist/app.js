@@ -46,11 +46,12 @@ let allowedDiscs = [
 let gameMemory = new Array();
 let turn = 1;
 let disableClick = false;
+/**
+ * run on load page:
+ * 1-change "balckBagrand" width and height size to adapte with squares.
+ * 2-call drawGreenSquares function.
+ */
 function init() {
-    /* run on load page:
-          1-change "balckBagrand" width and height size to adapte with squares.
-          2-call drawGreenSquares function.
-      */
     blackBackgrand = document.getElementById("blackBackgrand");
     discLayer = document.getElementById("discLayer");
     AnnotationUpFram = document.getElementById("up-fram");
@@ -75,8 +76,10 @@ function init() {
     elementVisibility("btn-left", false);
     elementVisibility("btn-right", false);
 }
+/**
+ * this function add a div into "blackBackgrand" div's and put some attribute on this.
+ */
 function drawGreenSquares() {
-    /* this function add a div into "blackBackgrand" div's and put some attribute on this.*/
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
             let greenSquare = document.createElement("div");
@@ -91,8 +94,10 @@ function drawGreenSquares() {
         }
     }
 }
+/**
+ * this function add a div into "blackBackgrand" div's and put some attribute on this.
+ */
 function drawAnnotationFram() {
-    /* this function add a div into "blackBackgrand" div's and put some attribute on this.*/
     for (let column = 0; column < 8; column++) {
         let AnnotationElement = (document.createElement("div"));
         AnnotationElement.setAttribute("id", "annotation-up");
@@ -114,8 +119,13 @@ function drawAnnotationFram() {
         AnnotationSideFram.appendChild(AnnotationElement);
     }
 }
+/**
+ * This function run while click on the tabel.
+ * @param row
+ * @param column
+ * @returns
+ */
 function clickSquare(row, column) {
-    //This function run while click on the tabel.
     if (disableClick == true) {
         return;
     }
@@ -145,8 +155,13 @@ function clickSquare(row, column) {
     turnComment();
     setMemory();
 }
+/**
+ * This function check allowed movement.
+ * @param row
+ * @param column
+ * @returns
+ */
 function canClickSpot(row, column) {
-    // This function check allowed movement.
     let affectedDiscs = getAffectedDiscs(row, column);
     if (affectedDiscs.length == 0) {
         return false;
@@ -155,12 +170,15 @@ function canClickSpot(row, column) {
         return true;
     }
 }
+/**
+ * This function identifies the disks that are affected by the main movement.
+ * Also we can use this function for check allowed movement.
+ * For more information about this function read doc-fa.docx [persian languege].
+ * @param row
+ * @param column
+ * @returns
+ */
 function getAffectedDiscs(row, column) {
-    /**
-     * This function identifies the disks that are affected by the main movement.
-     * Also we can use this function for check allowed movement.
-     * For more information about this function read doc-fa.docx [persian languege].
-     */
     let affectedDiscs = [];
     let couldBeAffected;
     let columnIterator;
@@ -335,8 +353,11 @@ function getAffectedDiscs(row, column) {
     }
     return affectedDiscs;
 }
+/**
+ * This function flip black disks to white and white disks to black.
+ * @param affectDiscs
+ */
 function flipDiscs(affectDiscs) {
-    //This function flip black disks to white and white disks to black.
     for (let i = 0; i < affectDiscs.length; i++) {
         let spot = affectDiscs[i];
         if (discs[spot.row][spot.column] == 1) {
@@ -347,9 +368,11 @@ function flipDiscs(affectDiscs) {
         }
     }
 }
+/**
+ * This function draw all of movement for each discs and set attribute for them.
+ * Also at the end of this function we call  'allowedMovement' and drawAllowedMovement' function's.
+ */
 function drawDiscs() {
-    // This function draw all of movement for each discs and set attribute for them.
-    // Also at the end of this function we call  'allowedMovement' and drawAllowedMovement' function's.
     discLayer.innerHTML = "";
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
@@ -376,9 +399,12 @@ function drawDiscs() {
         }
     }
 }
+/**
+ * This function find all of allowed movement and put them to 'allowedDiscs'.
+ * Also this function can return all allowed movement as array.
+ * @returns
+ */
 function allowedMovement() {
-    // This function find all of allowed movement and put them to 'allowedDiscs'.
-    // Also this function can return all allowed movement as array.
     clearTable(discAllowedLayer, allowedDiscs);
     let movement = false;
     for (let row = 0; row < 8; row++) {
@@ -393,8 +419,10 @@ function allowedMovement() {
     }
     return movement;
 }
+/**
+ * This function Draw All of Allowed Movement for each disc.
+ */
 function drawAllowedMovement() {
-    // This function Draw All of Allowed Movement for each disc.
     discAllowedLayer.innerHTML = "";
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
@@ -450,8 +478,10 @@ function playSound(audioPath) {
     var audio = new Audio(audioPath);
     audio.play();
 }
+/**
+ * Swich between two colors.
+ */
 function swichDiscs() {
-    /*swich between tow colors */
     if (turn == 1) {
         turn = 2; /*white number*/
     }
@@ -549,8 +579,10 @@ function turnComment() {
         elementVisibility("btn-right", true);
     }
 }
+/**
+ * This function Save Palyer's Move.
+ */
 function setMemory() {
-    // This function Save Palyer's Move.
     let discmemo = new Array();
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
@@ -560,8 +592,11 @@ function setMemory() {
     gameMemory.push(discmemo);
     indexMemory = gameMemory.length - 1;
 }
+/**
+ * This function return player's Move by Index number.
+ * @param index
+ */
 function getMemory(index) {
-    // This function return player's Move by Index number.
     let discmemo = gameMemory[index];
     let couter = 0;
     for (let row = 0; row < 8; row++) {
@@ -571,8 +606,10 @@ function getMemory(index) {
         }
     }
 }
+/**
+ * Draw Buttom bar.
+ */
 function drawtools() {
-    // Draw Buttom bar.
     let buttons;
     buttons = document.getElementById("buttons-section");
     buttons.innerHTML = `<div id="btn-left"><button class="button-19" id="btn" role="button" onclick="getBack()">عقب</button></div>
@@ -580,8 +617,10 @@ function drawtools() {
     <div id="btn-right"><button class="button-19" id="btn" role="button" onclick="getNext()">جلو</button></div>
   `;
 }
+/**
+ * Restart game ( ... and resets all settings. )
+ */
 function reStart() {
-    // Restart game ( ... and resets all settings. )
     disableClick = false;
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
@@ -615,8 +654,11 @@ function reStart() {
     elementVisibility("btn-left", false);
     elementVisibility("btn-right", false);
 }
+/**
+ * Show Previous move.
+ * @returns
+ */
 function getBack() {
-    // Show Previous move.
     if (indexMemory == 0) {
         return;
     }
@@ -626,8 +668,11 @@ function getBack() {
     getMemory(indexMemory);
     drawMemory();
 }
+/**
+ * Show Next move.
+ * @returns
+ */
 function getNext() {
-    // Show Next move.
     if (indexMemory == gameMemory.length - 1) {
         return;
     }
@@ -637,8 +682,10 @@ function getNext() {
     getMemory(indexMemory);
     drawMemory();
 }
+/**
+ * This function draw game memory.
+ */
 function drawMemory() {
-    // This function draw game memory.
     discLayer.innerHTML = "";
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
@@ -666,8 +713,12 @@ function drawMemory() {
         }
     }
 }
+/**
+ * Show and Hide Some element ( in this case Show buttom's at the end of game.)
+ * @param tagName
+ * @param visible
+ */
 function elementVisibility(tagName, visible) {
-    // Show and Hide Some element ( in this case Show buttom's at the end of game.)
     let element = document.getElementById(tagName);
     let element2 = (document.getElementById("btn-center"));
     if (visible == true) {

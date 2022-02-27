@@ -47,11 +47,12 @@ let gameMemory = new Array();
 let turn: number = 1;
 let disableClick = false;
 
+/**
+ * run on load page:
+ * 1-change "balckBagrand" width and height size to adapte with squares.
+ * 2-call drawGreenSquares function.
+ */
 function init() {
-  /* run on load page:
-        1-change "balckBagrand" width and height size to adapte with squares.
-        2-call drawGreenSquares function.
-    */
   blackBackgrand = <HTMLElement>document.getElementById("blackBackgrand");
   discLayer = <HTMLElement>document.getElementById("discLayer");
   AnnotationUpFram = <HTMLElement>document.getElementById("up-fram");
@@ -79,9 +80,10 @@ function init() {
   elementVisibility("btn-right", false);
 }
 
+/**
+ * this function add a div into "blackBackgrand" div's and put some attribute on this.
+ */
 function drawGreenSquares() {
-  /* this function add a div into "blackBackgrand" div's and put some attribute on this.*/
-
   for (let row = 0; row < 8; row++) {
     for (let column = 0; column < 8; column++) {
       let greenSquare: HTMLElement = <HTMLElement>document.createElement("div");
@@ -102,8 +104,10 @@ function drawGreenSquares() {
   }
 }
 
+/**
+ * this function add a div into "blackBackgrand" div's and put some attribute on this.
+ */
 function drawAnnotationFram() {
-  /* this function add a div into "blackBackgrand" div's and put some attribute on this.*/
   for (let column = 0; column < 8; column++) {
     let AnnotationElement: HTMLElement = <HTMLElement>(
       document.createElement("div")
@@ -133,9 +137,13 @@ function drawAnnotationFram() {
   }
 }
 
+/**
+ * This function run while click on the tabel.
+ * @param row
+ * @param column
+ * @returns
+ */
 function clickSquare(row: number, column: number) {
-  //This function run while click on the tabel.
-
   if (disableClick == true) {
     return;
   }
@@ -170,8 +178,13 @@ function clickSquare(row: number, column: number) {
   setMemory();
 }
 
+/**
+ * This function check allowed movement.
+ * @param row
+ * @param column
+ * @returns
+ */
 function canClickSpot(row: number, column: number): boolean {
-  // This function check allowed movement.
   let affectedDiscs = getAffectedDiscs(row, column);
   if (affectedDiscs.length == 0) {
     return false;
@@ -180,13 +193,15 @@ function canClickSpot(row: number, column: number): boolean {
   }
 }
 
+/**
+ * This function identifies the disks that are affected by the main movement.
+ * Also we can use this function for check allowed movement.
+ * For more information about this function read doc-fa.docx [persian languege].
+ * @param row
+ * @param column
+ * @returns
+ */
 function getAffectedDiscs(row: number, column: number): any {
-  /**
-   * This function identifies the disks that are affected by the main movement.
-   * Also we can use this function for check allowed movement.
-   * For more information about this function read doc-fa.docx [persian languege].
-   */
-
   let affectedDiscs: any[] = [];
   let couldBeAffected: any[];
   let columnIterator: number;
@@ -364,8 +379,11 @@ function getAffectedDiscs(row: number, column: number): any {
   return affectedDiscs;
 }
 
+/**
+ * This function flip black disks to white and white disks to black.
+ * @param affectDiscs
+ */
 function flipDiscs(affectDiscs: []) {
-  //This function flip black disks to white and white disks to black.
   for (let i = 0; i < affectDiscs.length; i++) {
     let spot: { row: number; column: number } = affectDiscs[i];
 
@@ -377,9 +395,11 @@ function flipDiscs(affectDiscs: []) {
   }
 }
 
+/**
+ * This function draw all of movement for each discs and set attribute for them.
+ * Also at the end of this function we call  'allowedMovement' and drawAllowedMovement' function's.
+ */
 function drawDiscs() {
-  // This function draw all of movement for each discs and set attribute for them.
-  // Also at the end of this function we call  'allowedMovement' and drawAllowedMovement' function's.
   discLayer.innerHTML = "";
 
   for (let row = 0; row < 8; row++) {
@@ -408,9 +428,12 @@ function drawDiscs() {
   }
 }
 
+/**
+ * This function find all of allowed movement and put them to 'allowedDiscs'.
+ * Also this function can return all allowed movement as array.
+ * @returns
+ */
 function allowedMovement(): boolean {
-  // This function find all of allowed movement and put them to 'allowedDiscs'.
-  // Also this function can return all allowed movement as array.
   clearTable(discAllowedLayer, allowedDiscs);
 
   let movement = false;
@@ -427,8 +450,10 @@ function allowedMovement(): boolean {
   return movement;
 }
 
+/**
+ * This function Draw All of Allowed Movement for each disc.
+ */
 function drawAllowedMovement() {
-  // This function Draw All of Allowed Movement for each disc.
   discAllowedLayer.innerHTML = "";
 
   for (let row = 0; row < 8; row++) {
@@ -482,13 +507,16 @@ function Score(): { black: number; white: number } {
     white: whiteScore,
   };
 }
+
 function playSound(audioPath: string) {
   var audio = new Audio(audioPath);
   audio.play();
 }
 
+/**
+ * Swich between two colors.
+ */
 function swichDiscs() {
-  /*swich between tow colors */
   if (turn == 1) {
     turn = 2; /*white number*/
   } else {
@@ -555,6 +583,7 @@ function AnnotationText(type: number, id: number): string {
   }
   return output;
 }
+
 function turnComment() {
   if (turn == 1) {
     blackAlertTag.innerHTML = '<div class="blink_me">حرکت با شماست</div>';
@@ -590,8 +619,10 @@ function turnComment() {
   }
 }
 
+/**
+ * This function Save Palyer's Move.
+ */
 function setMemory() {
-  // This function Save Palyer's Move.
   let discmemo = new Array();
   for (let row = 0; row < 8; row++) {
     for (let column = 0; column < 8; column++) {
@@ -602,8 +633,11 @@ function setMemory() {
   indexMemory = gameMemory.length - 1;
 }
 
+/**
+ * This function return player's Move by Index number.
+ * @param index
+ */
 function getMemory(index: number) {
-  // This function return player's Move by Index number.
   let discmemo = gameMemory[index];
   let couter: number = 0;
   for (let row = 0; row < 8; row++) {
@@ -613,8 +647,11 @@ function getMemory(index: number) {
     }
   }
 }
+
+/**
+ * Draw Buttom bar.
+ */
 function drawtools() {
-  // Draw Buttom bar.
   let buttons: HTMLElement;
   buttons = <HTMLElement>document.getElementById("buttons-section");
   buttons.innerHTML = `<div id="btn-left"><button class="button-19" id="btn" role="button" onclick="getBack()">عقب</button></div>
@@ -623,8 +660,10 @@ function drawtools() {
   `;
 }
 
+/**
+ * Restart game ( ... and resets all settings. )
+ */
 function reStart() {
-  // Restart game ( ... and resets all settings. )
   disableClick = false;
   for (let row = 0; row < 8; row++) {
     for (let column = 0; column < 8; column++) {
@@ -659,8 +698,11 @@ function reStart() {
   elementVisibility("btn-right", false);
 }
 
+/**
+ * Show Previous move.
+ * @returns
+ */
 function getBack() {
-  // Show Previous move.
   if (indexMemory == 0) {
     return;
   }
@@ -671,8 +713,11 @@ function getBack() {
   drawMemory();
 }
 
+/**
+ * Show Next move.
+ * @returns
+ */
 function getNext() {
-  // Show Next move.
   if (indexMemory == gameMemory.length - 1) {
     return;
   }
@@ -683,8 +728,10 @@ function getNext() {
   drawMemory();
 }
 
+/**
+ * This function draw game memory.
+ */
 function drawMemory() {
-  // This function draw game memory.
   discLayer.innerHTML = "";
 
   for (let row = 0; row < 8; row++) {
@@ -714,9 +761,12 @@ function drawMemory() {
   }
 }
 
+/**
+ * Show and Hide Some element ( in this case Show buttom's at the end of game.)
+ * @param tagName
+ * @param visible
+ */
 function elementVisibility(tagName: string, visible: boolean) {
-  // Show and Hide Some element ( in this case Show buttom's at the end of game.)
-
   let element: HTMLElement = <HTMLElement>document.getElementById(tagName);
   let element2: HTMLElement = <HTMLElement>(
     document.getElementById("btn-center")
