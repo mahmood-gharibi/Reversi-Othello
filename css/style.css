@@ -23,6 +23,7 @@ body {
   position: absolute; /* or absolute */
   top: 6%;
   left: 32%;
+  width: 50%;
 }
 
 .button-bar {
@@ -303,4 +304,12 @@ body {
   height: 100px;
   margin: 5px;
   float: left;
+}
+
+.flex-container {
+  position: fixed;
+  width: 1500px;
+  max-width: 100rem;
+  height: 700px;
+  padding-left: 20px;
 }

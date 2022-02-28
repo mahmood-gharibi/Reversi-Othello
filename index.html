@@ -10,38 +10,46 @@
     <title>Othello Mahmoud</title>
   </head>
   <body onload="init()">
-    <div class="Annotation">
-      <div id="up-fram"></div>
-      <div id="side-fram"></div>
+    <div class="flex-container">
+
+      <div class="flex-items-1">
+        <div class="Annotation">
+          <div id="up-fram"></div>
+          <div id="side-fram"></div>
+        </div>
+    
+        <div class="container-gameboard">
+          <div id="blackBackgrand"></div>
+          <div id="discAllowedMovement"></div>
+          <div id="discLayer"></div>
+        </div>
+           </div>
+
+      <div class="flex-items-2">
+          <div class="black-side">
+            <div id="frame-board">
+              <div id="frame-title-black">مهره سیاه</div>
+              <div id="frame-score-black">60</div>
+              <div id="frame-score-text-black">(تعداد مهره های سیاه)</div>
+              <div id="frame-alert-black"></div>
+          </div>
+        </div>
     </div>
 
-    <div class="container-gameboard">
-      <div id="blackBackgrand"></div>
-      <div id="discAllowedMovement"></div>
-      <div id="discLayer"></div>
+
+    <div class="flex-items-3">
+      <div class="white-side">
+        <div id="frame-board">
+          <div id="frame-title-white">مهره سفید</div>
+          <div id="frame-score-white">60</div>
+          <div id="frame-score-text-white">(تعداد مهره های سفید)</div>
+          <div id="frame-alert-white"></div>
+        </div>
+      </div>
+
     </div>
-  <div class="black-side">
-    <div id="frame-board">
-      <div id="frame-title-black">مهره سیاه</div>
-      <div id="frame-score-black">60</div>
-      <div id="frame-score-text-black">(تعداد مهره های سیاه)</div>
-      <div id="frame-alert-black"></div>
-  </div>
-  
-    </div>
-  <div class="white-side">
-    <div id="frame-board">
-      <div id="frame-title-white">مهره سفید</div>
-      <div id="frame-score-white">60</div>
-      <div id="frame-score-text-white">(تعداد مهره های سفید)</div>
-      <div id="frame-alert-white"></div>
-    </div>
-  </div>
 
   <div class="button-bar clearfix" id="buttons-section">
     
   </div>
-  
-    
-  
 </html>
