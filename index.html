@@ -10,46 +10,37 @@
     <title>Othello Mahmoud</title>
   </head>
   <body onload="init()">
-    <div class="flex-container">
-
-      <div class="flex-items-1">
-        <div class="Annotation">
+   
           <div id="up-fram"></div>
           <div id="side-fram"></div>
-        </div>
-    
-        <div class="container-gameboard">
-          <div id="blackBackgrand"></div>
-          <div id="discAllowedMovement"></div>
-          <div id="discLayer"></div>
-        </div>
+          
+          <div class="container">
+            <div id="blackBackgrand"></div>
+            <div id="discAllowedMovement"></div>
+            <div id="discLayer"></div>
            </div>
 
-      <div class="flex-items-2">
-          <div class="black-side">
-            <div id="frame-board">
-              <div id="frame-title-black">مهره سیاه</div>
-              <div id="frame-score-black">60</div>
-              <div id="frame-score-text-black">(تعداد مهره های سیاه)</div>
-              <div id="frame-alert-black"></div>
+           <div id="up-board">
+            <div id="frame-score-black">60</div>
+            <div class="frame-score-text">(تعداد مهره های سیاه)</div>
+            <div id="frame-alert-black"></div>
+            <!-- <div class="dot"></div> -->
+            <!-- <div class="pulse"></div> -->
+           
           </div>
-        </div>
-    </div>
+          <div id="down-board">
+            <div id="frame-score-white">60</div>
+            <div class="frame-score-text">(تعداد مهره های سفید)</div>
+            <div id="frame-alert-white"></div>
+           </div>
 
+           <div class="button-bar clearfix" id="buttons-section">
 
-    <div class="flex-items-3">
-      <div class="white-side">
-        <div id="frame-board">
-          <div id="frame-title-white">مهره سفید</div>
-          <div id="frame-score-white">60</div>
-          <div id="frame-score-text-white">(تعداد مهره های سفید)</div>
-          <div id="frame-alert-white"></div>
-        </div>
-      </div>
-
-    </div>
-
-  <div class="button-bar clearfix" id="buttons-section">
+            <button class="button-19" id="btn" role="button" onclick="getBack()">&lt;</button>
+            <button class="button-19" role="button" onclick="reStart()">شروع مجدد</button>
+            <button class="button-19" id="btn" role="button" onclick="getNext()">&gt;</button>
     
-  </div>
+          </div>
+         
+         
 </html>

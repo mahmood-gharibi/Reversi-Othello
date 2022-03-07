@@ -8,8 +8,8 @@ let blackScorTag: HTMLElement;
 let whiteAlertTag: HTMLElement;
 let blackAlertTag: HTMLElement;
 let gap: number = 3;
-let cellSize: number = 65;
-let discSize: number = 58;
+let cellSize: number = 45;
+let discSize: number = 38;
 let discGap: number = (cellSize - discSize) / 2;
 let indexMemory: number = 0;
 let memoryDiscs = [
@@ -654,9 +654,9 @@ function getMemory(index: number) {
 function drawtools() {
   let buttons: HTMLElement;
   buttons = <HTMLElement>document.getElementById("buttons-section");
-  buttons.innerHTML = `<div id="btn-left"><button class="button-19" id="btn" role="button" onclick="getBack()">عقب</button></div>
-    <div id="btn-center"><button class="button-19" role="button" onclick="reStart()">شروع مجدد</button></div>
-    <div id="btn-right"><button class="button-19" id="btn" role="button" onclick="getNext()">جلو</button></div>
+  buttons.innerHTML = `<div id="btn-left"><button class="button-19" id="btn" role="button" onclick="getBack()">&lt;</button></div>
+  <div id="btn-center"><button class="button-19" role="button" onclick="reStart()">شروع مجدد</button></div>
+  <div id="btn-right"><button class="button-19" id="btn" role="button" onclick="getNext()">&gt;</button></div>
   `;
 }
 
@@ -774,11 +774,11 @@ function elementVisibility(tagName: string, visible: boolean) {
 
   if (visible == true) {
     element.style.visibility = "visible";
-    element.style.width = "20%";
-    element2.style.width = "53%";
+    // element.style.width = "20%";
+    // element2.style.width = "53%";
   } else {
     element.style.visibility = "hidden";
-    element.style.width = "0px";
-    element2.style.width = "96%";
+    // element.style.width = "0px";
+    // element2.style.width = "96%";
   }
 }

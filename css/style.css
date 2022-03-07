@@ -12,63 +12,41 @@
 }
 
 body {
-  background-color: #1e1b18;
+  background-color: #ad8b73;
   user-select: none; /* supported by Chrome and Opera */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
-.container-gameboard {
-  position: absolute; /* or absolute */
-  top: 6%;
-  left: 32%;
-  width: 50%;
+
+.frame-score-text {
+  font-size: x-small;
+}
+#frame-alert-black {
+  margin-top: 0.5%;
+  font-size: small;
+}
+#frame-alert-white {
+  font-size: small;
 }
 
-.button-bar {
-  position: absolute; /* or absolute */
-  top: 85%;
-  left: 32%;
-  width: 35%;
-}
-
-.black-side {
-  position: absolute; /* or absolute */
-  top: 7%;
-  left: 70%;
-  width: 25%;
-  height: 74%;
-  background-color: #3e92cc;
-  border-radius: 3px;
-}
-
-.white-side {
-  position: absolute; /* or absolute */
-  top: 7%;
-  left: 4%;
-  width: 25%;
-  height: 74%;
-  background-color: #3e92cc;
-  border-radius: 3px;
-}
-
-#frame-board {
-  position: absolute; /* or absolute */
-  width: 96%;
-  height: 97%;
-  margin-left: 2%;
-  margin-top: 2%;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='3' stroke-dasharray='15%2c 15%2c 1' stroke-dashoffset='76' stroke-linecap='square'/%3e%3c/svg%3e");
-}
-
-#up-fram {
-  position: absolute; /* or absolute */
-  top: 2%;
-  left: 31%;
+#up-board {
   text-align: center;
-  vertical-align: middle;
+  font-family: "IRANSans";
+  font-weight: normal;
+  font-size: 2rem;
+  color: #ad8b73;
 }
+
+#down-board {
+  text-align: center;
+  font-family: "IRANSans";
+  font-weight: normal;
+  font-size: 2rem;
+  color: #ad8b73;
+}
+
 #annotation-up {
   position: absolute;
   font-size: 20px;
@@ -79,13 +57,6 @@ body {
     0px 0px 1px rgba(0, 0, 0, 0.2);
 }
 
-#side-fram {
-  position: absolute; /* or absolute */
-  top: 6%;
-  left: 29%;
-  text-align: center;
-  vertical-align: middle;
-}
 #annotation-side {
   position: absolute; /* or absolute */
   display: flex;
@@ -99,13 +70,16 @@ body {
     0px -2px 1px rgba(0, 0, 0, 0.41), 0px -2px 1px rgba(0, 0, 0, 0.5),
     0px 0px 1px rgba(0, 0, 0, 0.2);
 }
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #blackBackgrand {
   position: absolute;
   top: 0;
   left: 0;
-
-  /* margin-right: -50%;
-    transform: translate(-50%, -50%);*/
   background-color: #101110;
 }
 
@@ -140,176 +114,250 @@ body {
   );
 }
 
-#frame-title-black {
-  text-align: center;
-  font-family: "IRANSans";
-  font-weight: normal;
-  font-size: 35px;
-  margin-top: 5%;
-  color: #101110;
-}
-#frame-score-black {
-  text-align: center;
-  font-family: "IRANSans";
-  font-weight: normal;
-  font-size: 150px;
-  margin-top: 15%;
-  color: #101110;
-}
-#frame-score-text-black {
-  text-align: center;
-  font-family: "IRANSans";
-  font-weight: normal;
-  font-size: 15px;
-  margin-top: -15%;
-  color: #101110;
-}
-#frame-alert-black {
-  text-align: center;
-  font-family: "IRANSans";
-  font-weight: normal;
-  font-size: 20px;
-  margin-top: 30%;
-  color: #101110;
-  direction: rtl;
+/* دسکتاپ ها و لپ تاپ ها ———- */
+
+@media screen and (min-width: 375px) {
+  .container {
+    position: absolute; /* or absolute */
+    top: 22%;
+    left: 2%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+  #up-fram {
+    visibility: hidden;
+  }
+
+  #side-fram {
+    visibility: hidden;
+  }
+  #up-board {
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    background-color: #203239;
+    top: 0%;
+    left: 0;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+  #down-board {
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    background-color: #dff6ff;
+    top: 85%;
+    left: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
 }
 
-#frame-title-white {
-  text-align: center;
-  font-family: "IRANSans";
-  font-weight: normal;
-  font-size: 35px;
-  margin-top: 5%;
-  color: white;
+@media screen and (min-width: 425px) {
+  .container {
+    position: absolute; /* or absolute */
+    top: 23%;
+    left: calc(100% - 90%);
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+  #up-fram {
+    visibility: hidden;
+  }
+
+  #side-fram {
+    visibility: hidden;
+  }
+  #up-board {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    background-color: #203239;
+    top: 0%;
+    left: 0;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+  #down-board {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    background-color: #dff6ff;
+    top: 80%;
+    left: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
+  #buttons-section0 {
+    position: absolute;
+    font-size: 16px;
+    top: 0%;
+    left: 0%;
+  }
 }
 
-#frame-score-white {
-  text-align: center;
-  font-family: "IRANSans";
-  font-weight: normal;
-  font-size: 50px;
-  margin-top: 2%;
-  color: white;
-}
-#frame-score-white {
-  text-align: center;
-  font-family: "IRANSans";
-  font-weight: normal;
-  font-size: 150px;
-  margin-top: 15%;
-  color: white;
-}
-#frame-score-text-white {
-  text-align: center;
-  font-family: "IRANSans";
-  font-weight: normal;
-  font-size: 15px;
-  margin-top: -15%;
-  color: white;
-}
-#frame-alert-white {
-  text-align: center;
-  font-family: "IRANSans";
-  font-weight: normal;
-  font-size: 20px;
-  margin-top: 30%;
-  color: white;
-  direction: rtl;
-}
-.circul-waiting {
-  margin-top: -5%;
+@media screen and (min-width: 768px) {
+  .container {
+    position: absolute; /* or absolute */
+    top: 25%;
+    left: 28%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+  #up-fram {
+    visibility: visible;
+    position: absolute; /* or absolute */
+    top: 20%;
+    left: 30%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+
+  #side-fram {
+    visibility: visible;
+    position: absolute; /* or absolute */
+    top: 25%;
+    left: 23%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+
+  #up-board {
+    position: absolute;
+    width: 100%;
+    height: 13%;
+    background-color: #203239;
+    top: 0%;
+    left: 0;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+  #down-board {
+    position: absolute;
+    width: 100%;
+    height: 13%;
+    background-color: #dff6ff;
+    top: 87%;
+    left: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
+  #buttons-section0 {
+    position: absolute;
+    width: 20%;
+    top: 40%;
+    left: 2%;
+  }
 }
 
-/* CSS */
-.button-19 {
-  appearance: button;
-  background-color: #1899d6;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "IRANSans";
-  font-weight: normal;
-  font-size: 15px;
-  /* font-weight: 700; */
-  letter-spacing: 0.8px;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
-  overflow: visible;
-  padding: 13px 16px;
-  text-align: center;
-  text-transform: uppercase;
-  touch-action: manipulation;
-  transform: translateZ(0);
-  transition: filter 0.2s;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  width: 100%;
+@media screen and (min-width: 1024px) {
+  .container {
+    position: absolute;
+    top: 23%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+  }
+  #up-fram {
+    visibility: visible;
+    position: absolute; /* or absolute */
+    top: 18%; /*5*/
+    left: 36%; /*2*/
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+
+  #side-fram {
+    visibility: visible;
+    position: absolute; /* or absolute */
+    top: 23%;
+    left: 31%; /* -5 */
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+
+  #up-board {
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    background-color: #203239;
+    top: 0%;
+    left: 0;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+  #down-board {
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    background-color: #dff6ff;
+    top: 85%;
+    left: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
+  #buttons-section0 {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+  }
 }
 
-.button-19:after {
-  background-clip: padding-box;
-  background-color: #1cb0f6;
-  border: solid transparent;
-  border-radius: 16px;
-  border-width: 0 0 4px;
-  bottom: -4px;
-  content: "";
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
+@media screen and (min-width: 1440px) {
+  .container {
+    position: absolute;
+    top: 26%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+  }
+  #up-fram {
+    visibility: visible;
+    position: absolute; /* or absolute */
+    top: 21%; /*5*/
+    left: 41%; /*2*/
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+
+  #side-fram {
+    visibility: visible;
+    position: absolute; /* or absolute */
+    top: 26%;
+    left: 37%; /* -5 */
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+
+  #up-board {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    background-color: #203239;
+    top: 0%;
+    left: 0;
+
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+  }
+  #down-board {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    background-color: #dff6ff;
+    top: 80%;
+    left: 0;
+
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+  }
+
+  #buttons-section0 {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+  }
 }
 
-.button-19:main,
-.button-19:focus {
-  user-select: auto;
-}
+/* صفحه نمایش های بزرگ ———- */
 
-.button-19:hover:not(:disabled) {
-  filter: brightness(1.1);
-}
-
-.button-19:disabled {
-  cursor: auto;
-}
-
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-#btn-left {
-  width: 20%;
-  height: 100px;
-  margin: 5px;
-  float: left;
-}
-#btn-center {
-  width: 53%;
-  height: 100px;
-  margin: 5px;
-  float: left;
-}
-#btn-right {
-  width: 20%;
-  height: 100px;
-  margin: 5px;
-  float: left;
-}
-
-.flex-container {
-  position: fixed;
-  width: 1500px;
-  max-width: 100rem;
-  height: 700px;
-  padding-left: 20px;
+@media screen and (min-width: 1824px) {
 }
